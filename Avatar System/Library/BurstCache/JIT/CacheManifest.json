@@ -1,0 +1,1074 @@
+{
+  "BurstVersion": "ca476d69-fe22-4646-a548-58dcbc78df4c",
+  "Assemblies": [
+    {
+      "FullName": "Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-03-16T13:53:30Z"
+    },
+    {
+      "FullName": "netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51",
+      "LastWriteTime": "2022-02-02T14:26:07Z"
+    },
+    {
+      "FullName": "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "LastWriteTime": "2022-02-02T14:26:07Z"
+    },
+    {
+      "FullName": "UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-02-02T14:26:05Z"
+    },
+    {
+      "FullName": "glTFast, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-03-16T13:53:33Z"
+    },
+    {
+      "FullName": "mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "LastWriteTime": "2022-02-02T14:26:07Z"
+    },
+    {
+      "FullName": "Unity.Mathematics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-03-16T13:53:31Z"
+    },
+    {
+      "FullName": "glTFast.Export, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "LastWriteTime": "2022-03-16T13:53:33Z"
+    }
+  ],
+  "Functions": [
+    {
+      "FullName": "System.Int32 Unity.Burst.Intrinsics.X86::DoGetCSRTrampoline()",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "a5f5704516bfb0079fa0f065ee8e7968",
+      "LinkName": "CDCA4A5193BE5947",
+      "AssemblyDependencyIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Burst.Intrinsics.X86::DoSetCSRTrampoline(System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "418397eb55a84993a76d9962873f92ed",
+      "LinkName": "801E9A000BB37B05",
+      "AssemblyDependencyIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.CreateIndicesInt32Job>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "2473523ff7d4ad7a7b1b9f0a52896f1e",
+      "LinkName": "FC1F21C3C2E85002",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobExtensions/JobStruct`1<GLTFast.Jobs.MemCopyJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "eb206712766c581b5a8b1571fb1f9808",
+      "LinkName": "256F63F03CFE56DE",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.CreateIndicesInt32FlippedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "8a336d3b4970141b44bf86eeaa1e058f",
+      "LinkName": "E902A874AD6A99FA",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertIndicesUInt8ToInt32Job>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "eb1be86e64ff0f29f9d12e835f6399d8",
+      "LinkName": "F454A31A078CEF12",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertIndicesUInt8ToInt32FlippedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "29df90d024460101e3b8c278a7d30b30",
+      "LinkName": "83B4B483FCAC94FB",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertIndicesUInt16ToInt32FlippedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "71784166fd775f4041a600c4b9af027e",
+      "LinkName": "C6467AB3672ED40C",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertIndicesUInt16ToInt32Job>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "4506c3bf82d3dbdffb713bb9778e6ffe",
+      "LinkName": "DF0431FBDF597A31",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertIndicesUInt32ToInt32Job>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "69a25b15726cd6b134be3159c5c6d234",
+      "LinkName": "AB62A600C3FBB087",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertIndicesUInt32ToInt32FlippedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "e3acc0bc4f4df626f1d9a5062b71f30d",
+      "LinkName": "A0A95A57807792E7",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsUInt8ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "fa5da4aa8a869240a2b5c47155a63986",
+      "LinkName": "C484D94A990112FF",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsUInt8ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "519feb47e2bb5896b2786dda2b53c4d8",
+      "LinkName": "458791AAF7CBC2C8",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsUInt16ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "16b89847c26345e5b3c688a10c5549f1",
+      "LinkName": "183C83EC7516FA57",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsUInt16ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "1347feb7352b7610c5b3194c039b7499",
+      "LinkName": "BC6F2EA46200C035",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsInt16ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "d9acf3beb901128736e38f4d040d87fb",
+      "LinkName": "DD4EA93CE22CD0EF",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsInt16ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "fc5502fd2b49f26ffb2c98ecd88097a7",
+      "LinkName": "FAC3A2DB0CF687AE",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsInt8ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "8d5cd26c9e454ab3612ec21b8b7ecf88",
+      "LinkName": "D10A16BC7FA3EA7B",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsInt8ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "a1d0dbc7b4f9afd37dc4bd7e41c689a0",
+      "LinkName": "BECA22B010CDCD71",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertColorsRGBFloatToRGBAFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "3af3952347668194b1194931f9a5242d",
+      "LinkName": "DCAEF2AFBB69AF04",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertColorsRGBUInt8ToRGBAFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "9fa49547f8ce1c2f3f2ceb7648ed186c",
+      "LinkName": "BCA405045454A0C1",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertColorsRGBUInt16ToRGBAFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "b511e24168cb88f385fc0f1152dd70aa",
+      "LinkName": "6C9BEC84EAAA5211",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertColorsRGBAUInt16ToRGBAFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "0e9ddb99e1e44cad05a71c6a495f21a9",
+      "LinkName": "3C130C7D71D5576F",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertColorsRGBAFloatToRGBAFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "d6d14fbccca419fef2afdb9e12627da5",
+      "LinkName": "58EF022BD95F9FDB",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertColorsRGBAUInt8ToRGBAFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "311dc3ed13eab22a59128557b64ff2b7",
+      "LinkName": "8452923030CD729D",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertVector3FloatToFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "fc12a75048664456dfbbfd9007be5bf1",
+      "LinkName": "587F3BDCC7CEFF62",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        6,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertRotationsFloatToFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "ef5f949487ba5734fc422fd2560738ff",
+      "LinkName": "E614B2E03F631376",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        6,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertRotationsInt16ToFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "50b196df3bc1b13190c48f957d033f79",
+      "LinkName": "AFEA91DEE17C06ED",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertRotationsInt8ToFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "bc9527459810e91e094a12453f38344e",
+      "LinkName": "83D35BC5E7AB8805",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertUVsFloatToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "a30fdece9af3999bfe0e67669a658eff",
+      "LinkName": "907B277180B6A9D3",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertVector3FloatToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "83cb2fb19f21cb412c5194f0a1d898dc",
+      "LinkName": "A6DB15F0A15E0ABE",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertVector3SparseJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "97a05b460765bfefc25e867ae42acfd6",
+      "LinkName": "E9481BF408B1838E",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        0,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertTangentsFloatToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "dea10c094198e694b451e42e18cb8203",
+      "LinkName": "41E8FF142720698A",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertBoneWeightsFloatToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "37dd6d09d2a18198b57c72da9f0463e4",
+      "LinkName": "381731BB9E2836DD",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertBoneWeightsUInt8ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "14adbaf95057f119d2ce472dd5fb37e3",
+      "LinkName": "54264219998467F3",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertBoneWeightsUInt16ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "56acfb8927a8e307c27c351f52dae92e",
+      "LinkName": "81E6FD081BD731D4",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertTangentsInt16ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "73474453d53b95dc8616c9852324552d",
+      "LinkName": "B18124552CD4F163",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertTangentsInt8ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "4bc1d65c0ab572a08c50de3054983f42",
+      "LinkName": "3DF4B2D8EF005B3F",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertPositionsUInt16ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "e809be7f931fd8e55dffbfc3563e70ac",
+      "LinkName": "82345EACF7DA0F5F",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertPositionsUInt16ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "9100b74fbee6aa30dfacfb3190e2db0a",
+      "LinkName": "B742297209ED589C",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertPositionsInt16ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "1c36c827b10d4a69efa8b51cec24adc9",
+      "LinkName": "ACF5FDC5AC58E4F7",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertVector3Int16ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "49ef0958e369ee649aca1d6d3f0f3b45",
+      "LinkName": "0303685C74692006",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertNormalsInt16ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "f00ed05dc221dc3e19b2c38f66ff49ee",
+      "LinkName": "5E09810052505E9D",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertBoneJointsUInt16ToUInt32Job>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "0da18df6db5bb12a784169c524163b06",
+      "LinkName": "143B1B23D680E72E",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertMatricesJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "311480cba0f049d0538d89bc8d206924",
+      "LinkName": "079418428855E26C",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        6,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertPositionsInt8ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "c1d16132bd753e8c2dd86eb633a318d7",
+      "LinkName": "E060C0B067AD4E44",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertVector3Int8ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "a4bdf9e831e54b21ff65d4fcda15e776",
+      "LinkName": "221A76B8D0F2290B",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertNormalsInt8ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "304c40b1bfd739fde6e19cc26f93faf7",
+      "LinkName": "8639EFCD01453564",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertPositionsUInt8ToFloatInterleavedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "ba6482c49b7ad4f8a01cff73a7f58dd8",
+      "LinkName": "A766680A5558BC59",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertPositionsUInt8ToFloatInterleavedNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "1e0cd857ce62ff32ce9c482f883720e0",
+      "LinkName": "198BD90BE9DD3119",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertBoneJointsUInt8ToUInt32Job>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "b2ba994db97db4c723aec458ab3e136f",
+      "LinkName": "ED1DAF1C1F2370CE",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.SortJointsByWeightsJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "addec27fa37cec3737e0749b1b149752",
+      "LinkName": "C1F21125A10A5726",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertScalarInt8ToFloatNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "ca93b5aa01ee12b137113be2c5c6d907",
+      "LinkName": "595BF9655A77757A",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertScalarUInt8ToFloatNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "8b8d50927d0f8af91fda966677d7cbd4",
+      "LinkName": "CBAEB65381EECE7E",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertScalarInt16ToFloatNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "1cc55be55a76647df760c3367a4d96d3",
+      "LinkName": "868D4A39740DD78A",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Jobs.ConvertScalarUInt16ToFloatNormalizedJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "e5f0f1d667df8fc54c2560ad39efefb5",
+      "LinkName": "42BCCF5D4ADFCD50",
+      "AssemblyDependencyIndices": [
+        3,
+        4,
+        5,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Export.ExportJobs/ConvertPositionFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "4be80fc3d7e8d8f02601a7cca7d00c54",
+      "LinkName": "09A5F17DB52A876F",
+      "AssemblyDependencyIndices": [
+        3,
+        7,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Export.ExportJobs/ConvertTangentFloatJob>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "5326185e396b1e4c3d492414a2974f9a",
+      "LinkName": "B760A534EA164E6B",
+      "AssemblyDependencyIndices": [
+        3,
+        7,
+        5,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Int32 GLTFast.Jobs.CachedFunction::GetIndexValueUInt8(System.Void*,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "b0448f91f82172ea5f07cb4e571eba92",
+      "LinkName": "471635DB68BBC50D",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Int32 GLTFast.Jobs.CachedFunction::GetIndexValueInt8(System.Void*,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "7afe0d2746c52c7222ef1069dcfad3f2",
+      "LinkName": "5018969671B4F1B5",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Int32 GLTFast.Jobs.CachedFunction::GetIndexValueUInt16(System.Void*,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "3e156d4ab32769fd3d4fca57e9680b2d",
+      "LinkName": "32F5B8CDC66A835C",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Int32 GLTFast.Jobs.CachedFunction::GetIndexValueInt16(System.Void*,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "c5aab80d74520cf5081b7276bc81ef05",
+      "LinkName": "C83DF74BA603AE94",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Int32 GLTFast.Jobs.CachedFunction::GetIndexValueUInt32(System.Void*,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "eb5e81f3be49a7c9c825dd982ab3b54d",
+      "LinkName": "150CA370DDB1424C",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3Float(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "b2504d5ab72ecccecd1c7928f1f4589d",
+      "LinkName": "050BDF1E4D92F942",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3Int8(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "fd3c7d20221382303e76b35778d0059d",
+      "LinkName": "C79580849B4CA583",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3UInt8(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "0cb965ad742acd2a2843bb00757a19c6",
+      "LinkName": "D0FE355B44281744",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3Int16(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "97c2dab3a2c0f09f7a4a610470b72fef",
+      "LinkName": "04D1DDE4E4EAB571",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3UInt16(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "0e1b7c75bb01952a1bd4f407d79dc567",
+      "LinkName": "A2A10C450C4AE687",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3UInt32(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "4f07fc1459164a99755f8fba6f44927c",
+      "LinkName": "8C1555428C747CC9",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3Int8Normalized(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "d17b3a55379aa8a6548045131921dfd2",
+      "LinkName": "256BC27216E4EDF4",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3UInt8Normalized(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "ec5c3032d76bd2d601c2a0d4559891f1",
+      "LinkName": "E007A80E25C64102",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3Int16Normalized(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "07dba28887b50dd1d437c306d095923d",
+      "LinkName": "DA013EA3CA639A7F",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3UInt16Normalized(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "d09de7bbca3eeabe3ad60718e2210a88",
+      "LinkName": "32D8CA7E394168BC",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void GLTFast.Jobs.CachedFunction::GetFloat3UInt32Normalized(Unity.Mathematics.float3*,System.Void*)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "54d1c839ce5879ab4358b2e1272007ab",
+      "LinkName": "8CE57CBD51D9642B",
+      "AssemblyDependencyIndices": [
+        4,
+        1,
+        2,
+        6
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Export.ExportJobs/ConvertIndicesQuadFlippedJob`1<System.UInt16>>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "943fc1350eb2cab2837219145b22c3d1",
+      "LinkName": "CAAFE0AAC0A630D0",
+      "AssemblyDependencyIndices": [
+        3,
+        7,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Export.ExportJobs/ConvertIndicesFlippedJob`1<System.UInt16>>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "26cd5302c0c42af11cae46354b039997",
+      "LinkName": "81B95B071CECEC30",
+      "AssemblyDependencyIndices": [
+        3,
+        7,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Export.ExportJobs/ConvertIndicesQuadFlippedJob`1<System.UInt32>>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "e75d7dacb9a44455e2e6cd21311813c5",
+      "LinkName": "88CE25B7FF1F83E8",
+      "AssemblyDependencyIndices": [
+        3,
+        7,
+        2,
+        5,
+        1
+      ]
+    },
+    {
+      "FullName": "System.Void Unity.Jobs.IJobParallelForExtensions/ParallelForJobStruct`1<GLTFast.Export.ExportJobs/ConvertIndicesFlippedJob`1<System.UInt32>>::Execute(T&,System.IntPtr,System.IntPtr,Unity.Jobs.LowLevel.Unsafe.JobRanges&,System.Int32)",
+      "ModuleOptionsHash": 11834165633931345063,
+      "ModuleHash": "2847803e020991383cd6647b2d362e78",
+      "LinkName": "E712FA93C83716D3",
+      "AssemblyDependencyIndices": [
+        3,
+        7,
+        2,
+        5,
+        1
+      ]
+    }
+  ]
+}
