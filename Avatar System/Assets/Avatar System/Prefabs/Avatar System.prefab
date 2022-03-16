@@ -1,0 +1,100 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7484303096789634967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7484303096789634965}
+  - component: {fileID: 7484303096789634964}
+  m_Layer: 0
+  m_Name: Avatar System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7484303096789634965
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484303096789634967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7484303096789634964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484303096789634967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ccaea5b5a37da428006684354b31d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hairMeshes:
+  - {fileID: 8771091787928289351, guid: 73189ee4283864d5996dc0500ac14406, type: 3}
+  - {fileID: 8771091787928289351, guid: ae68a171f312a446bbe898ebdda0eef5, type: 3}
+  hairThumbnails:
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  upperMeshes:
+  - {fileID: 8771091787928289351, guid: 7843398ec575b461b86d014cba0158a7, type: 3}
+  - {fileID: 8771091787928289351, guid: e2ce6fb72fb644af2a3be30d3f730d1d, type: 3}
+  upperThumbnails:
+  - {fileID: 2800000, guid: 3d8089b0dd9d1b44ca135a8c39af93f8, type: 3}
+  - {fileID: 2800000, guid: 8b0c547dfbc13c94cbb35d298799de9f, type: 3}
+  lowerMeshes:
+  - {fileID: 8771091787928289351, guid: 72179a7194aab49ff857be8e2f0c0d8c, type: 3}
+  - {fileID: 8771091787928289351, guid: fb6806d413e5049edb006aec2b71d9da, type: 3}
+  lowerThumbnails:
+  - {fileID: 2800000, guid: 24750ba752f58b948bc3d0a831c39eae, type: 3}
+  - {fileID: 2800000, guid: 24750ba752f58b948bc3d0a831c39eae, type: 3}
+  feetMeshes:
+  - {fileID: 8771091787928289351, guid: 5a7b05ffce0c8409eb2394bc624d11b1, type: 3}
+  - {fileID: 8771091787928289351, guid: a97c20969a871400db6c62626b0abe9d, type: 3}
+  feetThumbnails:
+  - {fileID: 2800000, guid: ac5e1e2eeeb08294685b5a08a4d1ab56, type: 3}
+  - {fileID: 2800000, guid: ac5e1e2eeeb08294685b5a08a4d1ab56, type: 3}
+  facialHairMeshes:
+  - {fileID: 8771091787928289351, guid: 8c6e6993e1579481c9252bde211bb54e, type: 3}
+  facialHairThumbnails:
+  - {fileID: 2800000, guid: a0ac88384ff04f941847e2389dd4f0d2, type: 3}
+  earringMeshes: []
+  earringThumbnails: []
+  maskMeshes:
+  - {fileID: 8771091787928289351, guid: 0d19d9e3cf8f8443b8b5e0f71a1785be, type: 3}
+  maskThumbnails:
+  - {fileID: 2800000, guid: 19f619ba37d9ea34a946a6ff1f231959, type: 3}
+  hatMeshes: []
+  hatThumbnails: []
+  eyebrowsTextures:
+  - {fileID: 2800000, guid: 3cccf47dc1ad94813a006ef18bb5c827, type: 2}
+  eyesTextures:
+  - {fileID: 2800000, guid: 3cccf47dc1ad94813a006ef18bb5c827, type: 2}
+  eyesMasks:
+  - {fileID: 2800000, guid: 1b8c034cef83e48d6a1e095b70ce3d80, type: 3}
+  mouthTextures:
+  - {fileID: 2800000, guid: e7485d2d3a3a44bdf8d50fb256303587, type: 2}
+  eyesColors:
+  - {r: 0.2784314, g: 0.8313726, b: 0.8431373, a: 1}
+  - {r: 0.5188679, g: 0.35497844, b: 0.10524208, a: 1}
+  baseMale: {fileID: 1642329845610870291, guid: aa33a1fb58d574dc6b8590298c26ea50, type: 3}
+  baseFemale: {fileID: 582146872860925002, guid: 78adf29e48d434799a83c10e4ddb30f5, type: 3}
+  skinMaterials:
+  - {fileID: 2100000, guid: 285da261869b3e64ca74d06956fbe5ea, type: 2}
+  - {fileID: 2100000, guid: 2a8c8be185ab0e047b63d820dd74e5a8, type: 2}
+  hairMaterials:
+  - {fileID: 2100000, guid: c911f1f395076fd43beef9dd1d5ae0bc, type: 2}
+  - {fileID: 2100000, guid: 3125516fa8e70234291bfaea8acf403c, type: 2}
