@@ -44,6 +44,7 @@ public class CharacterCustomizationUI : MonoBehaviour
         _avatar = avatarSystem.InstanceAvatar(spawnTransform, true, "Avatar");
         SetSkinColor(0);
         //avatarSystem.SetRandomAvatar(_avatar);
+        ShowSexPanel();
     }
 
 
@@ -146,13 +147,15 @@ public class CharacterCustomizationUI : MonoBehaviour
     }
 
 
-    private void CreateThumbnailsButtons(int bodyPart, int columnsCount, bool isMale)
+    private void CreateThumbnailsButtons(int bodyPart, bool isMale, Transform parent = null)
     {
         List<WereableObject> wereables;
         if (isMale)
             wereables = _maleBodyParts[bodyPart];
         else
             wereables = _femaleBodyParts[bodyPart];
+
+        var buttonsParent = (parent == null) ? this.buttonsParent : parent;
 
         for (int i = 0; i < wereables.Count; i++)
         {
@@ -214,9 +217,10 @@ public class CharacterCustomizationUI : MonoBehaviour
     }
 
 
-    public void SetHairColorTab()
+    public void SetHairColorTab(Transform parent = null)
     {
         var materials = avatarSystem.hairMaterials;
+        var buttonsParent = (parent == null) ? this.buttonsParent : parent;
 
         for (int i = 0; i < materials.Length; i++)
         {
@@ -232,7 +236,7 @@ public class CharacterCustomizationUI : MonoBehaviour
     public void ChangeTab(int bodyPart)
     {
         //_tabSelected = bodyPart;
-        CreateThumbnailsButtons(bodyPart, _thumbnailColumns, _isMale);
+        CreateThumbnailsButtons(bodyPart, _isMale);
     }
 
 
@@ -269,4 +273,263 @@ public class CharacterCustomizationUI : MonoBehaviour
         buttons.SetActive(!isVisible);
         if (!isVisible) DestroyThumbnailsButtons();
     }
+
+    public enum TypePanel { Buttons, NulleableButtons, ButtonsWithColor };
+    public enum Panel { Selection, Subselection, Colors }
+    public enum Section {
+        Hair,
+        Upper,
+        Lower,
+        Feet,
+        FacialHair,
+        Earring,
+        Mask,
+        Hat,
+        Head,
+        Eyebrows,
+        Eyes,
+        Mouth,
+        Sex,
+        EyesColor,
+        HairColor,
+        FacialHairColor,
+        EyebrowsColor,
+        SkinColor
+    }
+    public GameObject[] panels;
+    public GameObject[] headButtons;
+    public Sprite colorSprite;
+    public Sprite cancelSprite;
+    public delegate void SetColorPart();
+    private List<Button> _colorButtons = new List<Button>();
+    public void ShowPanel(TypePanel typePanel, Panel panel, Section section, SetColorPart setColorMethod = null, bool destroyThumbnails = true)
+    {
+        if(destroyThumbnails) DestroyThumbnailsButtons();
+        DestroyColorButtons();
+
+        panels[(int)panel].SetActive(true);
+
+        if (typePanel == TypePanel.NulleableButtons)
+        {
+
+        }
+        else if (typePanel == TypePanel.ButtonsWithColor)
+        {
+            var button = Instantiate(thumbnailButtonPrefab, panels[(int)panel].transform);
+            button.image.sprite = colorSprite;
+            _thumbnailsButtons.Add(button);
+            button.onClick.AddListener(delegate () { setColorMethod(); });
+
+            var cancelButton = Instantiate(thumbnailButtonPrefab, panels[(int)panel].transform);
+            cancelButton.image.sprite = cancelSprite;
+            _thumbnailsButtons.Add(cancelButton);
+            cancelButton.onClick.AddListener(delegate () { InitializeBodyPart((int)section); });
+
+        }
+
+        if (section >= 0 && (int)section < avatarSystem.bodyPartsCount && section != Section.Head)
+        {
+            CreateThumbnailsButtons((int)section, _isMale, panels[(int)panel].transform);
+        }
+        else
+        {
+            //if(section == Section.Head)
+            //{
+            //    SetHeadPanel();
+            //}
+            //if (section == Section.HairColor)
+            //{
+            //    SetHairColorPanel();
+            //}
+            //if (section == Section.Sex)
+            //{
+            //    SetSexPanel();
+            //}
+            switch(section)
+            {
+                case Section.Head:
+                    SetHeadPanel();
+                    break;
+
+                case Section.HairColor:
+                    SetHairColorPanel();
+                    break;
+
+                case Section.Sex:
+                    SetSexPanel();
+                    break;
+
+                case Section.EyesColor:
+                    SetEyesColorPanel();
+                    break;
+
+                case Section.SkinColor:
+                    SetSkinColorPanel();
+                    break;
+
+            }
+        }
+    }
+
+    private void SetHeadPanel()
+    {
+        foreach (var headButton in headButtons)
+        {
+            headButton.SetActive(true);
+        }
+    }
+
+    public void ShowUpperPanel()
+    {
+        HidePanels();
+        ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Upper);
+    }
+
+    public void ShowLowerPanel()
+    {
+        HidePanels();
+        ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Lower);
+    }
+
+    public void ShowFeetPanel()
+    {
+        HidePanels();
+        ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Feet);
+    }
+
+    public void ShowHeadPanel()
+    {
+        HidePanels();
+        ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Head);
+        ShowPanel(TypePanel.Buttons, Panel.Subselection, Section.Eyes);
+    }
+
+    public void ShowEyesPanel()
+    {
+        ShowPanel(TypePanel.Buttons, Panel.Subselection, Section.Eyes);
+    }
+
+    public void ShowMouthPanel()
+    {
+        ShowPanel(TypePanel.Buttons, Panel.Subselection, Section.Mouth);
+    }
+
+    public void ShowHairPanel()
+    {
+        HidePanels();
+        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.Hair, ShowHairColorsPanel);
+    }
+
+    public void ShowHairColorsPanel()
+    {
+        ShowPanel(TypePanel.Buttons, Panel.Colors, Section.HairColor, null, false);
+    }
+
+    public void ShowFacialHairPanel()
+    {
+        HidePanels();
+        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.FacialHair, ShowHairColorsPanel);
+    }
+
+    public void ShowSexPanel()
+    {
+        HidePanels();
+        ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Sex);
+    }
+
+    public void ShowEyesColorPanel()
+    {
+        ShowPanel(TypePanel.Buttons, Panel.Selection, Section.EyesColor);
+    }
+
+    public void ShowSkinColorPanel()
+    {
+        ShowPanel(TypePanel.Buttons, Panel.Selection, Section.SkinColor);
+    }
+
+    private void HidePanels()
+    {
+        foreach (var panel in panels)
+        {
+            panel.SetActive(false);
+        }
+
+        foreach (var headButton in headButtons)
+        {
+            headButton.SetActive(false);
+        }
+    }
+
+    private void SetHairColorPanel()
+    {
+        var materials = avatarSystem.hairMaterials;
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+            var button = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Colors].transform.Find("Layout"));
+            button.image.color = materials[i].color;
+            var index = i;
+            button.onClick.AddListener(delegate () { SetHairColor(index); });
+            _colorButtons.Add(button);
+        }
+    }
+
+    private void DestroyColorButtons()
+    {
+        foreach (var item in _colorButtons)
+        {
+            Destroy(item.gameObject);
+        }
+        _colorButtons.Clear();
+    }
+
+    public void HideColorPanel()
+    {
+        panels[(int)Panel.Colors].SetActive(false);
+    }
+
+    private void SetSexPanel()
+    {
+        var buttonMale = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+        buttonMale.image.sprite = maleButtonSprite;
+        buttonMale.onClick.AddListener(delegate () { SetBodyMesh(true); });
+
+        var buttonFemale = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+        buttonFemale.image.sprite = femaleButtonSprite;
+        buttonFemale.onClick.AddListener(delegate () { SetBodyMesh(false); });
+
+        _thumbnailsButtons.Add(buttonMale);
+        _thumbnailsButtons.Add(buttonFemale);
+    }
+
+    public void SetEyesColorPanel()
+    {
+        var colors = avatarSystem.eyesColors;
+        for (int i = 0; i < colors.Length; i++)
+        {
+            var button = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+            button.image.color = colors[i];
+            var index = i;
+            button.onClick.AddListener(delegate () { SetEyesColor(index); });
+            _thumbnailsButtons.Add(button);
+        }
+    }
+
+    public void SetSkinColorPanel()
+    {
+        var materials = avatarSystem.skinMaterials;
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+            var button = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+            button.image.color = materials[i].color;
+            var index = i;
+            button.onClick.AddListener(delegate () { SetSkinColor(index); });
+            _thumbnailsButtons.Add(button);
+        }
+    }
+
+
+
+
 }

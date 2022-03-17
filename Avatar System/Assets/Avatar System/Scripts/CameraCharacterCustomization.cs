@@ -80,6 +80,7 @@ public class CameraCharacterCustomization : MonoBehaviour
 
     private void InitializeInterpolation(Transform _endMarker)
     {
+        if (_endMarker.position == transform.position) return;
         _startMarker = transform;
         this._endMarker = _endMarker;
         _startTime = Time.time;
