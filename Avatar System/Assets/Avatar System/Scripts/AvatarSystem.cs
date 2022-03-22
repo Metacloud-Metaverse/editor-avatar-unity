@@ -102,7 +102,6 @@ public class AvatarSystem : MonoBehaviour
         }
     }
 
-
     private void SetHairMaterial(GameObject baseMesh)
     {
         var hairTransform = baseMesh.transform.Find(BodyPart.HAIR_NAME);
@@ -115,10 +114,10 @@ public class AvatarSystem : MonoBehaviour
         if (facialHairTransform != null)
             renderers[1] = facialHairTransform.gameObject.GetComponentInChildren<Renderer>();
 
-
         foreach (var renderer in renderers)
         {
             if (renderer == null) continue;
+            
             renderer.material = _hairMaterial;
             renderer.material.name = _hairMaterialName;
         }
@@ -334,7 +333,7 @@ public class AvatarSystem : MonoBehaviour
 
         var part = baseMesh.transform.Find(bodyPart.name);
 
-        if (part != null) Destroy(part.gameObject);
+        if (part != null) DestroyImmediate(part.gameObject);
 
         var parent = baseMesh.transform;
 

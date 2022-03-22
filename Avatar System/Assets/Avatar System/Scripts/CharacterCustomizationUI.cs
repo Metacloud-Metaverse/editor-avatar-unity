@@ -116,12 +116,6 @@ public class CharacterCustomizationUI : MonoBehaviour
     }
 
 
-    //private void InitializeBodyPart(int bodyPart)
-    //{
-    //    InitializeBodyPart(bodyPart, 0);
-    //}
-
-
     private void InitializeBodyPart(int bodyPart, int initializationIndex = 0)
     {
         if (avatarSystem.IsBodyPartRemoveable(bodyPart))
@@ -146,7 +140,7 @@ public class CharacterCustomizationUI : MonoBehaviour
         }
     }
 
-
+    public GameObject selectedButtonPrefab;
     private void CreateThumbnailsButtons(int bodyPart, bool isMale, Transform parent = null)
     {
         List<WereableObject> wereables;
@@ -168,10 +162,16 @@ public class CharacterCustomizationUI : MonoBehaviour
             );
             var index = wereables[i].index;
             button.onClick.AddListener(delegate () { SetBodyPart(bodyPart, index); });
+            button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _thumbnailsButtons); });
             _thumbnailsButtons.Add(button);
+            if (_currentStyle[bodyPart] == i)
+                InstantiateSelectedButton(button.transform, true);
+            else
+                InstantiateSelectedButton(button.transform);
         }
     }
 
+    
 
     public void SetSexTab()
     {
@@ -248,8 +248,13 @@ public class CharacterCustomizationUI : MonoBehaviour
             bodyPart == AvatarSystem.FACIAL_HAIR ||
             bodyPart == AvatarSystem.EYEBROWS)
             avatarSystem.SetHairColor(_hairColor, _avatar);
+
+        _currentStyle[bodyPart] = index;
     }
 
+    public void SetHairColor()
+    {
+    }
 
     private void DestroyThumbnailsButtons()
     {
@@ -297,12 +302,22 @@ public class CharacterCustomizationUI : MonoBehaviour
         SkinColor
     }
     public GameObject[] panels;
-    public GameObject[] headButtons;
+    public GameObject[] panelsLayouts;
+    public Button[] headButtons;
+    public RectTransform selectionButtonsContainer;
     public Sprite colorSprite;
     public Sprite cancelSprite;
     public delegate void SetColorPart();
     private List<Button> _colorButtons = new List<Button>();
-    public void ShowPanel(TypePanel typePanel, Panel panel, Section section, SetColorPart setColorMethod = null, bool destroyThumbnails = true)
+    private float _buttonWidth;
+    public RectTransform selectionLayoutRect;
+    public ScrollRect selectionScrollRect;
+    public HorizontalLayoutGroup selectionLayout;
+    public Sprite selectedImage;
+    private const int _EYES_BUTTON = 0;
+    private const int _MOUTH_BUTTON = 1;
+
+    public void ShowPanel(TypePanel typePanel, Panel panel, Section section, SetColorPart setColorMethod = null, bool destroyThumbnails = true, int bodyPart = 0)
     {
         if(destroyThumbnails) DestroyThumbnailsButtons();
         DestroyColorButtons();
@@ -311,40 +326,41 @@ public class CharacterCustomizationUI : MonoBehaviour
 
         if (typePanel == TypePanel.NulleableButtons)
         {
-
+            SetContainerWithButton(false);
         }
         else if (typePanel == TypePanel.ButtonsWithColor)
         {
-            var button = Instantiate(thumbnailButtonPrefab, panels[(int)panel].transform);
+            var button = Instantiate(thumbnailButtonPrefab, panels[(int)panel].transform /*.Find(_layoutName)*/);
             button.image.sprite = colorSprite;
+            button.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -10);
             _thumbnailsButtons.Add(button);
             button.onClick.AddListener(delegate () { setColorMethod(); });
 
-            var cancelButton = Instantiate(thumbnailButtonPrefab, panels[(int)panel].transform);
+            _buttonWidth = button.GetComponent<RectTransform>().sizeDelta.x;
+
+            var cancelButton = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)panel].transform);
             cancelButton.image.sprite = cancelSprite;
             _thumbnailsButtons.Add(cancelButton);
             cancelButton.onClick.AddListener(delegate () { InitializeBodyPart((int)section); });
+            cancelButton.onClick.AddListener(delegate () { SetButtonSelected(cancelButton.gameObject, _thumbnailsButtons); });
 
+            if (_currentStyle[bodyPart] == -1)
+                InstantiateSelectedButton(cancelButton.transform, true);
+            else
+                InstantiateSelectedButton(cancelButton.transform);
+
+            SetContainerWithButton(true);
         }
+        else
+            SetContainerWithButton(false);
+
 
         if (section >= 0 && (int)section < avatarSystem.bodyPartsCount && section != Section.Head)
         {
-            CreateThumbnailsButtons((int)section, _isMale, panels[(int)panel].transform);
+            CreateThumbnailsButtons((int)section, _isMale, panelsLayouts[(int)panel].transform);
         }
         else
         {
-            //if(section == Section.Head)
-            //{
-            //    SetHeadPanel();
-            //}
-            //if (section == Section.HairColor)
-            //{
-            //    SetHairColorPanel();
-            //}
-            //if (section == Section.Sex)
-            //{
-            //    SetSexPanel();
-            //}
             switch(section)
             {
                 case Section.Head:
@@ -366,35 +382,57 @@ public class CharacterCustomizationUI : MonoBehaviour
                 case Section.SkinColor:
                     SetSkinColorPanel();
                     break;
-
             }
         }
+
+    }
+
+    private void SetContainerWithButton(bool active)
+    {
+        if(active)
+        {
+            selectionButtonsContainer.offsetMin = new Vector2(_buttonWidth, selectionButtonsContainer.offsetMin.y);
+            selectionLayout.padding = new RectOffset((int)_buttonWidth + (int)selectionLayout.spacing, 0, 0, 0);
+        }
+        else
+        {
+            selectionButtonsContainer.offsetMin = new Vector2(0, selectionButtonsContainer.offsetMin.y);
+            selectionLayout.padding = new RectOffset((int)selectionLayout.spacing, (int)selectionLayout.spacing, 0, 0);
+
+        }
+
     }
 
     private void SetHeadPanel()
     {
         foreach (var headButton in headButtons)
         {
-            headButton.SetActive(true);
+            headButton.gameObject.SetActive(true);
         }
+
+        headButtons[_EYES_BUTTON].interactable = false;
+        headButtons[_MOUTH_BUTTON].interactable = true;
     }
 
     public void ShowUpperPanel()
     {
         HidePanels();
         ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Upper);
+        SetPivotLeft(selectionLayoutRect);
     }
 
     public void ShowLowerPanel()
     {
         HidePanels();
         ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Lower);
+        SetPivotLeft(selectionLayoutRect);
     }
 
     public void ShowFeetPanel()
     {
         HidePanels();
         ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Feet);
+        SetPivotLeft(selectionLayoutRect);
     }
 
     public void ShowHeadPanel()
@@ -402,22 +440,27 @@ public class CharacterCustomizationUI : MonoBehaviour
         HidePanels();
         ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Head);
         ShowPanel(TypePanel.Buttons, Panel.Subselection, Section.Eyes);
+        SetPivotCenter(selectionLayoutRect);
     }
 
     public void ShowEyesPanel()
     {
         ShowPanel(TypePanel.Buttons, Panel.Subselection, Section.Eyes);
+        
+        SetPivotCenter(selectionLayoutRect);
     }
 
     public void ShowMouthPanel()
     {
         ShowPanel(TypePanel.Buttons, Panel.Subselection, Section.Mouth);
+        SetPivotCenter(selectionLayoutRect);
     }
 
     public void ShowHairPanel()
     {
         HidePanels();
-        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.Hair, ShowHairColorsPanel);
+        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.Hair, ShowHairColorsPanel, true, AvatarSystem.HAIR);
+        SetPivotLeft(selectionLayoutRect);
     }
 
     public void ShowHairColorsPanel()
@@ -428,23 +471,40 @@ public class CharacterCustomizationUI : MonoBehaviour
     public void ShowFacialHairPanel()
     {
         HidePanels();
-        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.FacialHair, ShowHairColorsPanel);
+        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.FacialHair, ShowHairColorsPanel, true, AvatarSystem.FACIAL_HAIR);
+        SetPivotLeft(selectionLayoutRect);
     }
 
     public void ShowSexPanel()
     {
         HidePanels();
         ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Sex);
+        SetPivotCenter(selectionLayoutRect);
     }
 
     public void ShowEyesColorPanel()
     {
         ShowPanel(TypePanel.Buttons, Panel.Selection, Section.EyesColor);
+        SetPivotCenter(selectionLayoutRect);
     }
 
     public void ShowSkinColorPanel()
     {
+        HidePanels();
         ShowPanel(TypePanel.Buttons, Panel.Selection, Section.SkinColor);
+        SetPivotCenter(selectionLayoutRect);
+    }
+
+    private Vector2 _pivotCenter = new Vector2(0.5f,0.5f);
+    private void SetPivotCenter(RectTransform rt)
+    {
+        rt.pivot = _pivotCenter;
+    }
+
+    private Vector2 _pivotLeft = new Vector2(0f, 0.5f);
+    private void SetPivotLeft(RectTransform rt)
+    {
+        rt.pivot = _pivotLeft;
     }
 
     private void HidePanels()
@@ -456,7 +516,7 @@ public class CharacterCustomizationUI : MonoBehaviour
 
         foreach (var headButton in headButtons)
         {
-            headButton.SetActive(false);
+            headButton.gameObject.SetActive(false);
         }
     }
 
@@ -466,12 +526,19 @@ public class CharacterCustomizationUI : MonoBehaviour
 
         for (int i = 0; i < materials.Length; i++)
         {
-            var button = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Colors].transform.Find("Layout"));
+            var button = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Colors].transform);
             button.image.color = materials[i].color;
             var index = i;
             button.onClick.AddListener(delegate () { SetHairColor(index); });
+            button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _colorButtons); });
             _colorButtons.Add(button);
+
+            if (_hairColor == i)
+                InstantiateSelectedButton(button.transform, true);
+            else
+                InstantiateSelectedButton(button.transform);
         }
+        SetContainerWithButton(true);
     }
 
     private void DestroyColorButtons()
@@ -490,16 +557,22 @@ public class CharacterCustomizationUI : MonoBehaviour
 
     private void SetSexPanel()
     {
-        var buttonMale = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+        var buttonMale = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Selection].transform);
         buttonMale.image.sprite = maleButtonSprite;
         buttonMale.onClick.AddListener(delegate () { SetBodyMesh(true); });
+        buttonMale.onClick.AddListener(delegate () { SetButtonSelected(buttonMale.gameObject, _thumbnailsButtons); });
 
-        var buttonFemale = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+        var buttonFemale = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Selection].transform);
         buttonFemale.image.sprite = femaleButtonSprite;
         buttonFemale.onClick.AddListener(delegate () { SetBodyMesh(false); });
+        buttonFemale.onClick.AddListener(delegate () { SetButtonSelected(buttonFemale.gameObject, _thumbnailsButtons); });
 
         _thumbnailsButtons.Add(buttonMale);
         _thumbnailsButtons.Add(buttonFemale);
+
+
+        InstantiateSelectedButton(buttonMale.transform);
+        InstantiateSelectedButton(buttonFemale.transform);
     }
 
     public void SetEyesColorPanel()
@@ -507,11 +580,17 @@ public class CharacterCustomizationUI : MonoBehaviour
         var colors = avatarSystem.eyesColors;
         for (int i = 0; i < colors.Length; i++)
         {
-            var button = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+            var button = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Selection].transform);
             button.image.color = colors[i];
             var index = i;
             button.onClick.AddListener(delegate () { SetEyesColor(index); });
+            button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _thumbnailsButtons); });
             _thumbnailsButtons.Add(button);
+
+            if (_eyesColor == i)
+                InstantiateSelectedButton(button.transform, true);
+            else
+                InstantiateSelectedButton(button.transform);
         }
     }
 
@@ -521,15 +600,37 @@ public class CharacterCustomizationUI : MonoBehaviour
 
         for (int i = 0; i < materials.Length; i++)
         {
-            var button = Instantiate(thumbnailButtonPrefab, panels[(int)Panel.Selection].transform);
+            var button = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Selection].transform);
             button.image.color = materials[i].color;
             var index = i;
             button.onClick.AddListener(delegate () { SetSkinColor(index); });
+            button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _thumbnailsButtons); });
             _thumbnailsButtons.Add(button);
+
+            if (_skinColor == i)
+                InstantiateSelectedButton(button.transform, true);
+            else
+                InstantiateSelectedButton(button.transform);
         }
     }
 
+    public void SetButtonSelected(GameObject button, List<Button> buttons)
+    {
+        foreach (var b in buttons)
+        {
+            var selectedImage = b.transform.Find(_selectedButtonName);
+            if(selectedImage != null) selectedImage.gameObject.SetActive(false);
+        }
+        var selected = button.transform.Find(_selectedButtonName);
+        if (selected != null) selected.gameObject.SetActive(true);
+    }
 
-
+    private string _selectedButtonName = "Selected";
+    private void InstantiateSelectedButton(Transform parent, bool active = false)
+    {
+        var selected = Instantiate(selectedButtonPrefab, parent);
+        selected.name = _selectedButtonName;
+        selected.SetActive(active);
+    }
 
 }
