@@ -14,16 +14,17 @@ public class CharacterCustomizationUI : MonoBehaviour
     public ScrollRect scrollRect;
     public Sprite maleButtonSprite;
     public Sprite femaleButtonSprite;
+    public Sprite colorButtonSprite;
     public Transform spawnTransform;
+    public Button colorButtonPrefab;
+    public Color colorButtonSelectedColor = new Color(0, 1, 1);
 
     private int[] _currentStyle;
     private int _skinColor;
     private int _hairColor;
     private int _eyesColor;
     private int _bodyPartsCount;
-    private int _thumbnailColumns = 4;
     private bool _isMale = true;
-    //private int _tabSelected;
     private List<Button> _thumbnailsButtons = new List<Button>();
     private List<WereableObject>[] _femaleBodyParts;
     private List<WereableObject>[] _maleBodyParts;
@@ -219,13 +220,25 @@ public class CharacterCustomizationUI : MonoBehaviour
 
     public void SetHairColorTab(Transform parent = null)
     {
-        var materials = avatarSystem.hairMaterials;
+        //var materials = avatarSystem.hairMaterials;
+        //var buttonsParent = (parent == null) ? this.buttonsParent : parent;
+
+        //for (int i = 0; i < materials.Length; i++)
+        //{
+        //    var button = Instantiate(thumbnailButtonPrefab, buttonsParent);
+        //    button.image.color = materials[i].color;
+        //    var index = i;
+        //    button.onClick.AddListener(delegate () { SetHairColor(index); });
+        //    _thumbnailsButtons.Add(button);
+        //}
+
+        var colors = avatarSystem.hairColors;
         var buttonsParent = (parent == null) ? this.buttonsParent : parent;
 
-        for (int i = 0; i < materials.Length; i++)
+        for (int i = 0; i < colors.Length; i++)
         {
             var button = Instantiate(thumbnailButtonPrefab, buttonsParent);
-            button.image.color = materials[i].color;
+            button.image.color = colors[i];
             var index = i;
             button.onClick.AddListener(delegate () { SetHairColor(index); });
             _thumbnailsButtons.Add(button);
@@ -398,9 +411,7 @@ public class CharacterCustomizationUI : MonoBehaviour
         {
             selectionButtonsContainer.offsetMin = new Vector2(0, selectionButtonsContainer.offsetMin.y);
             selectionLayout.padding = new RectOffset((int)selectionLayout.spacing, (int)selectionLayout.spacing, 0, 0);
-
         }
-
     }
 
     private void SetHeadPanel()
@@ -458,9 +469,7 @@ public class CharacterCustomizationUI : MonoBehaviour
 
     public void ShowHairPanel()
     {
-        HidePanels();
-        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.Hair, ShowHairColorsPanel, true, AvatarSystem.HAIR);
-        SetPivotLeft(selectionLayoutRect);
+        ShowPanel(TypePanel.ButtonsWithColor, Panel.Subselection, Section.Hair, ShowHairColorsPanel, true, AvatarSystem.HAIR);
     }
 
     public void ShowHairColorsPanel()
@@ -470,9 +479,7 @@ public class CharacterCustomizationUI : MonoBehaviour
 
     public void ShowFacialHairPanel()
     {
-        HidePanels();
-        ShowPanel(TypePanel.ButtonsWithColor, Panel.Selection, Section.FacialHair, ShowHairColorsPanel, true, AvatarSystem.FACIAL_HAIR);
-        SetPivotLeft(selectionLayoutRect);
+        ShowPanel(TypePanel.ButtonsWithColor, Panel.Subselection, Section.FacialHair, ShowHairColorsPanel, true, AvatarSystem.FACIAL_HAIR);
     }
 
     public void ShowSexPanel()
@@ -522,21 +529,29 @@ public class CharacterCustomizationUI : MonoBehaviour
 
     private void SetHairColorPanel()
     {
-        var materials = avatarSystem.hairMaterials;
+        var colors = avatarSystem.hairColors;
 
-        for (int i = 0; i < materials.Length; i++)
+        for (int i = 0; i < colors.Length; i++)
         {
-            var button = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Colors].transform);
-            button.image.color = materials[i].color;
+            var button = Instantiate(colorButtonPrefab, panelsLayouts[(int)Panel.Colors].transform);
             var index = i;
+            button.image.sprite = colorButtonSprite;
             button.onClick.AddListener(delegate () { SetHairColor(index); });
-            button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _colorButtons); });
+            button.onClick.AddListener(delegate () { SetColorButtonSelected(button); });
+
+            var buttonInside = button.transform.Find(_colorButtonInsideName).gameObject;
+            buttonInside.GetComponent<Image>().color = colors[i];
+
             _colorButtons.Add(button);
 
             if (_hairColor == i)
-                InstantiateSelectedButton(button.transform, true);
+            {
+                button.image.color = new Color(0, 1, 1);
+            }
             else
-                InstantiateSelectedButton(button.transform);
+            {
+                button.image.color = colors[i];
+            }
         }
         SetContainerWithButton(true);
     }
@@ -623,6 +638,19 @@ public class CharacterCustomizationUI : MonoBehaviour
         }
         var selected = button.transform.Find(_selectedButtonName);
         if (selected != null) selected.gameObject.SetActive(true);
+    }
+
+    private string _colorButtonInsideName = "Color Button Inside";
+    public void SetColorButtonSelected(Button button)
+    {
+        foreach (var b in _colorButtons)
+        {
+            var buttonInside = b.transform.Find(_colorButtonInsideName).gameObject;
+            var color = buttonInside.GetComponent<Image>().color;
+            b.image.color = color;
+        }
+        button.image.color = colorButtonSelectedColor;
+
     }
 
     private string _selectedButtonName = "Selected";

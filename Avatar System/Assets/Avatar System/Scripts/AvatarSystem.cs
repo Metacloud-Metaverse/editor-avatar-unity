@@ -41,6 +41,7 @@ public class AvatarSystem : MonoBehaviour
 
     public Material[] skinMaterials;
     public Material[] hairMaterials;
+    public Color[] hairColors;
     private string _rootBoneName = "Bip001";
     public int bodyPartsCount { get { return _bodyPartsCount; } }
 
@@ -164,12 +165,22 @@ public class AvatarSystem : MonoBehaviour
         SetAllMaterials(MaterialType.SKIN, baseMesh);
     }
 
-
+    public string materialColorName = "_BaseColor";
     public void SetHairColor(int colorIndex, GameObject baseMesh)
     {
-        _hairMaterial = hairMaterials[colorIndex];
-        SetHairMaterial(baseMesh);
-        SetEyebrowsColor(_hairMaterial, baseMesh);
+        //_hairMaterial = hairMaterials[colorIndex];
+        //SetHairMaterial(baseMesh);
+        //SetEyebrowsColor(_hairMaterial, baseMesh);
+
+        //
+
+        var hairTransform = baseMesh.transform.Find(BodyPart.HAIR_NAME);
+        if (hairTransform == null) return;
+
+        Renderer renderer;
+        renderer = hairTransform.gameObject.GetComponentInChildren<Renderer>();
+        renderer.material.SetColor(materialColorName, hairColors[colorIndex]);
+
     }
 
 
