@@ -23,7 +23,7 @@ public class AvatarParser
 
         cc.SetSkinColor(o.skin.index, avatar);
         cc.SetEyesColor(o.eyesColor.index, avatar);
-        cc.SetHairColor(o.hairColor.index, avatar);
+        cc.SetHeadHairColor(o.hairColor.index, avatar);
     }
 
     private void SetBodyPart(int bodyPartIndex, WereableInfo info, GameObject avatar)

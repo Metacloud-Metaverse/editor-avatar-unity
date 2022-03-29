@@ -44,38 +44,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hairMeshes:
-  - {fileID: 8771091787928289351, guid: 73189ee4283864d5996dc0500ac14406, type: 3}
-  - {fileID: 8771091787928289351, guid: ae68a171f312a446bbe898ebdda0eef5, type: 3}
+  - {fileID: 2809341446559033727, guid: f8892dc50c4e1472f85dd99ec8576c33, type: 3}
+  - {fileID: 8753062963318165796, guid: cfc0ee80f7502470e9f77ea0988bae89, type: 3}
   hairThumbnails:
   - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
   - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
+  - {fileID: 2800000, guid: bdd49f82b755a5248ae737a36284574c, type: 3}
   upperMeshes:
-  - {fileID: 8771091787928289351, guid: 7843398ec575b461b86d014cba0158a7, type: 3}
-  - {fileID: 8771091787928289351, guid: e2ce6fb72fb644af2a3be30d3f730d1d, type: 3}
+  - {fileID: 5892293281253391091, guid: 3b6b2f463ecd547c592840745844e9fa, type: 3}
+  - {fileID: 7780123521235381072, guid: d82fc0a07c4554daabda109a0c7ca497, type: 3}
   upperThumbnails:
   - {fileID: 2800000, guid: 3d8089b0dd9d1b44ca135a8c39af93f8, type: 3}
   - {fileID: 2800000, guid: 8b0c547dfbc13c94cbb35d298799de9f, type: 3}
   lowerMeshes:
-  - {fileID: 8771091787928289351, guid: 72179a7194aab49ff857be8e2f0c0d8c, type: 3}
-  - {fileID: 8771091787928289351, guid: fb6806d413e5049edb006aec2b71d9da, type: 3}
+  - {fileID: 8771091787928289351, guid: 4f851e9841c134beb9de88faea02cb19, type: 3}
+  - {fileID: 800655080050379350, guid: 01e7ab61a52e34b73a38a728e6e740a1, type: 3}
   lowerThumbnails:
   - {fileID: 2800000, guid: 24750ba752f58b948bc3d0a831c39eae, type: 3}
   - {fileID: 2800000, guid: 24750ba752f58b948bc3d0a831c39eae, type: 3}
   feetMeshes:
-  - {fileID: 8771091787928289351, guid: 5a7b05ffce0c8409eb2394bc624d11b1, type: 3}
-  - {fileID: 8771091787928289351, guid: a97c20969a871400db6c62626b0abe9d, type: 3}
+  - {fileID: 4492359096393426775, guid: db252471dd0024648ab3697f81c2e5e8, type: 3}
+  - {fileID: 5940369175442493028, guid: d67ba4f1a307c4137916526dec32a197, type: 3}
   feetThumbnails:
   - {fileID: 2800000, guid: ac5e1e2eeeb08294685b5a08a4d1ab56, type: 3}
   - {fileID: 2800000, guid: ac5e1e2eeeb08294685b5a08a4d1ab56, type: 3}
   facialHairMeshes:
-  - {fileID: 8771091787928289351, guid: 8c6e6993e1579481c9252bde211bb54e, type: 3}
+  - {fileID: 7365243978068333628, guid: 404f507cf283f4d3d87b4bb3c55e097a, type: 3}
   facialHairThumbnails:
   - {fileID: 2800000, guid: a0ac88384ff04f941847e2389dd4f0d2, type: 3}
   earringMeshes: []
   earringThumbnails: []
   maskMeshes:
-  - {fileID: 8771091787928289351, guid: 0d19d9e3cf8f8443b8b5e0f71a1785be, type: 3}
+  - {fileID: 2199327401944436021, guid: 79ff51f7066634a2fac2118e6031c3a3, type: 3}
+  - {fileID: 7547253933205908029, guid: 0a4d3292d37ce48f1a608eac47a7e2a5, type: 3}
   maskThumbnails:
+  - {fileID: 2800000, guid: 19f619ba37d9ea34a946a6ff1f231959, type: 3}
   - {fileID: 2800000, guid: 19f619ba37d9ea34a946a6ff1f231959, type: 3}
   hatMeshes: []
   hatThumbnails: []
@@ -89,8 +109,15 @@ MonoBehaviour:
   - {fileID: 2800000, guid: e7485d2d3a3a44bdf8d50fb256303587, type: 2}
   eyesColors:
   - {r: 0.2784314, g: 0.8313726, b: 0.8431373, a: 1}
-  - {r: 0.5188679, g: 0.35497844, b: 0.10524208, a: 1}
-  baseMale: {fileID: 1642329845610870291, guid: aa33a1fb58d574dc6b8590298c26ea50, type: 3}
+  - {r: 0.22931574, g: 0.7830189, b: 0.114498034, a: 1}
+  - {r: 0.5176471, g: 0.35686275, b: 0.10588236, a: 1}
+  - {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0.009572137, b: 0.9528302, a: 1}
+  - {r: 0.64396614, g: 0, b: 0.9529412, a: 1}
+  - {r: 1, g: 0.96324, b: 0, a: 1}
+  - {r: 1, g: 0.0670706, b: 0, a: 1}
+  baseMale: {fileID: 1642329845610870291, guid: 08bbb95c66d6240d09ab71dfba66e027, type: 3}
   baseFemale: {fileID: 582146872860925002, guid: 78adf29e48d434799a83c10e4ddb30f5, type: 3}
   skinMaterials:
   - {fileID: 2100000, guid: 285da261869b3e64ca74d06956fbe5ea, type: 2}
@@ -98,3 +125,15 @@ MonoBehaviour:
   hairMaterials:
   - {fileID: 2100000, guid: c911f1f395076fd43beef9dd1d5ae0bc, type: 2}
   - {fileID: 2100000, guid: 3125516fa8e70234291bfaea8acf403c, type: 2}
+  hairColors:
+  - {r: 0.990566, g: 0.88647574, b: 0.032707386, a: 1}
+  - {r: 0.9339623, g: 0.083704144, b: 0.8713498, a: 1}
+  - {r: 0.09856866, g: 0.8584906, b: 0.028346404, a: 1}
+  - {r: 0.52297795, g: 0.043075833, b: 0.8301887, a: 1}
+  - {r: 0.12927197, g: 0.2480252, b: 0.7830189, a: 1}
+  - {r: 0.8207547, g: 0.08904416, b: 0.08904416, a: 1}
+  - {r: 1, g: 0.51755524, b: 0.0047169924, a: 1}
+  - {r: 0.7169812, g: 0.42899203, b: 0.02367392, a: 1}
+  - {r: 0.3584906, g: 0.25396207, b: 0.103150584, a: 1}
+  - {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
+  materialColorName: _BaseColor

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Avatar System/Scenes/Character customization v2.unity
+    guid: 590b29decbe964b25b59d37f66e680d9
   m_configObjects: {}

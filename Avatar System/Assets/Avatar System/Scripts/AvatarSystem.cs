@@ -42,7 +42,7 @@ public class AvatarSystem : MonoBehaviour
     public Material[] skinMaterials;
     public Material[] hairMaterials;
     public Color[] hairColors;
-    private string _rootBoneName = "Bip001";
+    private string _rootBoneName = "Root";
     public int bodyPartsCount { get { return _bodyPartsCount; } }
 
     private BodyPart[] _bodyParts;
@@ -166,23 +166,30 @@ public class AvatarSystem : MonoBehaviour
     }
 
     public string materialColorName = "_BaseColor";
-    public void SetHairColor(int colorIndex, GameObject baseMesh)
+    private void SetHairColor(int colorIndex, GameObject baseMesh, string partName)
     {
-        //_hairMaterial = hairMaterials[colorIndex];
-        //SetHairMaterial(baseMesh);
-        //SetEyebrowsColor(_hairMaterial, baseMesh);
-
-        //
-
-        var hairTransform = baseMesh.transform.Find(BodyPart.HAIR_NAME);
+        var hairTransform = baseMesh.transform.Find(partName);
         if (hairTransform == null) return;
 
         Renderer renderer;
         renderer = hairTransform.gameObject.GetComponentInChildren<Renderer>();
         renderer.material.SetColor(materialColorName, hairColors[colorIndex]);
-
     }
 
+    public void SetHeadHairColor(int colorIndex, GameObject baseMesh)
+    {
+        SetHairColor(colorIndex, baseMesh, BodyPart.HAIR_NAME);
+    }
+
+    public void SetFacialHairColor(int colorIndex, GameObject baseMesh)
+    {
+        SetHairColor(colorIndex, baseMesh, BodyPart.FACIAL_HAIR_NAME);
+    }
+
+    public void SetEyebrowsColor(int colorIndex, GameObject baseMesh)
+    {
+        SetHairColor(colorIndex, baseMesh, BodyPart.EYEBROWS_NAME);
+    }
 
     public void SetEyebrowsColor(Material referenceMaterial, GameObject baseMesh)
     {
@@ -393,7 +400,7 @@ public class AvatarSystem : MonoBehaviour
 
         foreach (var renderer in renderers)
         {
-            if (bodyPart.name == BodyPart.HAIR_NAME || bodyPart.name == BodyPart.FACIAL_HAIR_NAME)
+            if (bodyPart.name == BodyPart.HAIR_NAME /*|| bodyPart.name == BodyPart.FACIAL_HAIR_NAME*/)
                 SetMaterial(renderer, MaterialType.HAIR);
 
             else if (bodyPart.name == BodyPart.UPPER_NAME || bodyPart.name == BodyPart.LOWER_NAME || bodyPart.name == BodyPart.FEET_NAME)
@@ -462,7 +469,7 @@ public class AvatarSystem : MonoBehaviour
     }
 
 
-    public void SetAvatar(GameObject avatar, int? hair, int upper, int lower, int feet, int? facialHair, int? earring, int? mask, int? hat, int eyes, int mouth, int eyebrows, int skinColor, int hairColor)
+    public void SetAvatar(GameObject avatar, int? hair, int upper, int lower, int feet, int? facialHair, int? earring, int? mask, int? hat, int eyes, int mouth, int eyebrows, int skinColor, int hairColor, int eyesColor)
     {
         _skinMaterial = skinMaterials[skinColor];
         _hairMaterial = hairMaterials[hairColor];
@@ -482,7 +489,8 @@ public class AvatarSystem : MonoBehaviour
         SetBodyPart(MOUTH, mouth, avatar);
 
         SetSkinColor(skinColor, avatar);
-        SetHairColor(hairColor, avatar);
+        SetHeadHairColor(hairColor, avatar);
+        SetEyesColor(eyesColor, avatar);
     }
 
 
@@ -491,10 +499,11 @@ public class AvatarSystem : MonoBehaviour
         SetBones(avatar);
 
         var skinColor = Random.Range(0, skinMaterials.Length);
-        var hairColor = Random.Range(0, hairMaterials.Length);
+        var hairColor = Random.Range(0, hairColors.Length);
+        var facialHairColor = Random.Range(0, hairColors.Length);
 
         _skinMaterial = skinMaterials[skinColor];
-        _hairMaterial = hairMaterials[hairColor];
+        //_hairMaterial = hairMaterials[hairColor];
         SetBodyPart(UPPER, Random.Range(0, upperMeshes.Length), avatar);
         SetBodyPart(LOWER, Random.Range(0, lowerMeshes.Length), avatar);
         SetBodyPart(FEET, Random.Range(0, feetMeshes.Length), avatar);
@@ -503,7 +512,7 @@ public class AvatarSystem : MonoBehaviour
         SetPartNulleableRandom(HAIR, hairMeshes, avatar);
 
         //SetNulleableBodyPart(EARRING, Random.Range(0, earringMeshes.Length), avatar);
-        //SetNulleableBodyPart(MASK, Random.Range(0, maskMeshes.Length), avatar);
+        SetPartNulleableRandom(MASK, maskMeshes, avatar);
         //SetNulleableBodyPart(HAT, Random.Range(0, hatMeshes.Length), avatar);
 
         SetBodyPart(EYES, Random.Range(0, eyesTextures.Length), avatar);
@@ -511,7 +520,8 @@ public class AvatarSystem : MonoBehaviour
         SetBodyPart(MOUTH, Random.Range(0, mouthTextures.Length), avatar);
 
         SetSkinColor(skinColor, avatar);
-        SetHairColor(hairColor, avatar);
+        SetHeadHairColor(hairColor, avatar);
+        SetFacialHairColor(facialHairColor, avatar);
         SetEyesColor(Random.Range(0, eyesColors.Length), avatar);
     }
 
@@ -520,6 +530,11 @@ public class AvatarSystem : MonoBehaviour
         var rnd = Random.Range(-1, meshes.Length);
         if (rnd >= 0)
             SetNulleableBodyPart(part, rnd, avatar);
+        else
+        {
+            var bodyPart = avatar.transform.Find(_bodyParts[part].name);
+            if (bodyPart != null) Destroy(bodyPart.gameObject);
+        }
     }
 
     private void SetNulleableBodyPart(int bodyPart, int? index, GameObject avatar)

@@ -566,11 +566,12 @@ Animation:
   m_GameObject: {fileID: 1642329845610870291}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: dc04c96dbcf584cf0ba03f02d841a955, type: 2}
+  m_Animation: {fileID: 7400000, guid: bf16641de35e346a9bb752bc57295342, type: 2}
   m_Animations:
-  - {fileID: 7400000, guid: 2f95c45f15b7d4f7d86d487a6daaef44, type: 2}
+  - {fileID: 7400000, guid: b47d009067d724430bad918620a216f2, type: 2}
   - {fileID: 7400000, guid: bf16641de35e346a9bb752bc57295342, type: 2}
   - {fileID: 7400000, guid: dc04c96dbcf584cf0ba03f02d841a955, type: 2}
+  - {fileID: 7400000, guid: 22e94dc4edc0244329702643fc1603bc, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
