@@ -8,7 +8,7 @@ Shader "Custom/Gradient_3Color" {
      }
  
      SubShader {
-         Tags {"Queue"="Background"  "IgnoreProjector"="True"}
+         Tags {"Queue"="Background"  "IgnoreProjector"="True" "RenderType"="Transparent"}
          LOD 100
  
          ZWrite On
@@ -18,7 +18,8 @@ Shader "Custom/Gradient_3Color" {
          #pragma vertex vert  
          #pragma fragment frag
          #include "UnityCG.cginc"
- 
+
+         sampler2D _MainTex;
          fixed4 _ColorTop;
          fixed4 _ColorMid;
          fixed4 _ColorBot;
@@ -37,9 +38,13 @@ Shader "Custom/Gradient_3Color" {
          }
  
          fixed4 frag (v2f i) : COLOR {
-             fixed4 c = lerp(_ColorBot, _ColorMid, i.texcoord.x / _Middle) * step(i.texcoord.x, _Middle);
+            // fixed4 c = lerp(_ColorBot, _ColorMid, i.texcoord.x / _Middle) * step(i.texcoord.x, _Middle);
+            // c += lerp(_ColorMid, _ColorTop, (i.texcoord.x - _Middle) / (1 - _Middle)) * step(_Middle, i.texcoord.x);
+             fixed4 c = tex2D(_MainTex, i.texcoord);
+             clip(c.a - 1);
+             c *= lerp(_ColorBot, _ColorMid, i.texcoord.x / _Middle) * step(i.texcoord.x, _Middle);
              c += lerp(_ColorMid, _ColorTop, (i.texcoord.x - _Middle) / (1 - _Middle)) * step(_Middle, i.texcoord.x);
-             c.a = 1;
+
              return c;
          }
          ENDCG

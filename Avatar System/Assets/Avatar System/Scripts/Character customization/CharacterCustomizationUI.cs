@@ -17,7 +17,7 @@ public class CharacterCustomizationUI : MonoBehaviour
     public Sprite colorButtonSprite;
     public Transform spawnTransform;
     public Button colorButtonPrefab;
-    public Color colorButtonSelectedColor = new Color(0, 1, 1);
+    public Color buttonOverlaySelectedColor = new Color(0, 1, 1);
 
     private int[] _currentStyle;
     private int _skinColor;
@@ -25,6 +25,7 @@ public class CharacterCustomizationUI : MonoBehaviour
     private int _facialHairColor;
     private int _eyebrowsColor;
     private int _eyesColor;
+    private int _sex;
     private int _bodyPartsCount;
     private bool _isMale = true;
     private List<Button> _thumbnailsButtons = new List<Button>();
@@ -64,6 +65,7 @@ public class CharacterCustomizationUI : MonoBehaviour
         _eyebrowsColor = 0;
         _skinColor = 0;
         _eyesColor = 0;
+        _sex = 0;
 
         avatarSystem.SetAvatar(
             _avatar,
@@ -122,6 +124,12 @@ public class CharacterCustomizationUI : MonoBehaviour
         avatarSystem.SetEyesColor(colorIndex, _avatar);
     }
 
+    public void SetEyebrowsColor(int colorIndex)
+    {
+        _eyebrowsColor = colorIndex;
+        avatarSystem.SetEyebrowsColor(colorIndex, _avatar);
+    }
+
 
     public void SetMask(int index)
     {
@@ -146,6 +154,8 @@ public class CharacterCustomizationUI : MonoBehaviour
         avatarSystem.SetSkinColor(_skinColor, _avatar);
 
         _isMale = isMale;
+        _sex = (_isMale) ? 0 : 1;
+
     }
 
 
@@ -372,6 +382,7 @@ public class CharacterCustomizationUI : MonoBehaviour
     public GameObject bodyPanel;
     public HorizontalLayoutGroup sexButtonsLayout;
     public Sprite selectedImage;
+    public Button[] sexButtons;
     private Vector2 _middleLeftAnchorMin = new Vector2(0, 0.5f);
     private Vector2 _middleLeftAnchorMax = new Vector2(0, 0.5f);
     private Vector2 _middleLeftPivot = new Vector2(0, 0.5f);
@@ -434,6 +445,11 @@ public class CharacterCustomizationUI : MonoBehaviour
                 case Section.EyesColor:
                     SetEyesColorPanel();
                     break;
+
+                case Section.EyebrowsColor:
+                    SetEyebrowsColorPanel();
+                    break;
+
 
                 case Section.SkinColor:
                     SetSkinColorPanel();
@@ -557,13 +573,29 @@ public class CharacterCustomizationUI : MonoBehaviour
         ShowPanel(TypePanel.NulleableButtonsWithColor, Panel.Subselection, Section.FacialHair, ShowFacialHairColorsPanel, true, AvatarSystem.FACIAL_HAIR);
     }
 
+    public void ShowEyebrowsPanel()
+    {
+        HideColorPanel();
+        ShowPanel(TypePanel.ButtonsWithColor, Panel.Subselection, Section.Eyebrows, ShowEyebrowsColorPanel, true, AvatarSystem.EYEBROWS);
+    }
+
+    private bool _addedSexButtonsDelegates;
     public void ShowSexPanel()
     {
         HidePanels();
         panels[(int)Panel.Selection].SetActive(true);
         sexButtonsLayout.gameObject.SetActive(true);
-        //ShowPanel(TypePanel.Buttons, Panel.Selection, Section.Sex);
-        //SetPivotCenter(selectionLayoutRect);
+        SetButtonOverlaySelected(sexButtons[_sex], sexButtons,null,true);
+        if (!_addedSexButtonsDelegates)
+            AddSexButtonsDelegate();
+    }
+
+    private void AddSexButtonsDelegate()
+    {
+        foreach (var button in sexButtons)
+        {
+            button.onClick.AddListener(delegate { SetButtonOverlaySelected(button, sexButtons, null, true); });
+        }
     }
 
     public void ShowEyesColorPanel()
@@ -571,12 +603,12 @@ public class CharacterCustomizationUI : MonoBehaviour
         ShowPanel(TypePanel.Buttons, Panel.Colors, Section.EyesColor, null, false);
     }
 
-    //public void ShowSkinColorPanel()
-    //{
-    //    HidePanels();
-    //    ShowPanel(TypePanel.Buttons, Panel.Selection, Section.SkinColor);
-    //    SetPivotCenter(selectionLayoutRect);
-    //}
+    public void ShowEyebrowsColorPanel()
+    {
+        ShowPanel(TypePanel.Buttons, Panel.Colors, Section.EyebrowsColor, null, false);
+    }
+
+    
 
     public void ShowMaskPanel()
     {
@@ -648,6 +680,11 @@ public class CharacterCustomizationUI : MonoBehaviour
         SetColorPanel(avatarSystem.eyesColors, SetEyesColor, _eyesColor, Panel.Colors);
     }
 
+    private void SetEyebrowsColorPanel()
+    {
+        SetColorPanel(avatarSystem.hairColors, SetEyebrowsColor, _eyebrowsColor, Panel.Colors);
+    }
+
     private delegate void SetColorFunction(int index);
 
     private void SetColorPanel(Color[] colors, SetColorFunction SetColor, int savedConfig, Panel panel )
@@ -675,6 +712,7 @@ public class CharacterCustomizationUI : MonoBehaviour
         button.image.sprite = colorButtonSprite;
         button.onClick.AddListener(delegate () { setColor(index); });
         button.onClick.AddListener(delegate () { SetColorButtonSelected(button); });
+        button.onClick.AddListener(delegate () { SetButtonOverlaySelected(button, _colorButtons, _colorButtonInsideName); });
 
         var buttonInside = button.transform.Find(_colorButtonInsideName).gameObject;
         buttonInside.GetComponent<RectTransform>().sizeDelta = new Vector2(buttonInsideSize, buttonInsideSize);
@@ -746,7 +784,7 @@ public class CharacterCustomizationUI : MonoBehaviour
     public void SetSkinColorPanel()
     {
         var materials = avatarSystem.skinMaterials;
-        SetColorPanel(materials, SetSkinColor, 0, Panel.Subselection);
+        SetColorPanel(materials, SetSkinColor, _skinColor, Panel.Subselection);
         //for (int i = 0; i < materials.Length; i++)
         //{
         //    var button = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Selection].transform);
@@ -775,6 +813,7 @@ public class CharacterCustomizationUI : MonoBehaviour
     }
 
     private string _colorButtonInsideName = "Color Button Inside";
+    private string _sexButtonInsideName = "Sex Button Inside";
     public void SetColorButtonSelected(Button button)
     {
         foreach (var b in _colorButtons)
@@ -783,8 +822,38 @@ public class CharacterCustomizationUI : MonoBehaviour
             var color = buttonInside.GetComponent<Image>().color;
             b.image.color = color;
         }
-        button.image.color = colorButtonSelectedColor;
+        button.image.color = buttonOverlaySelectedColor;
+    }
 
+    private void SetButtonOverlaySelected(Button button, List<Button> buttons, string buttonInsideName)
+    {
+        foreach (var b in buttons)
+        {
+            UnselectOverlayButton(b, buttonInsideName);
+        }
+        button.image.color = buttonOverlaySelectedColor;
+    }
+
+    private void SetButtonOverlaySelected(Button button, Button[] buttons, string buttonInsideName, bool transparent = false)
+    {
+        foreach (var b in buttons)
+        {
+            UnselectOverlayButton(b, buttonInsideName, transparent);
+        }
+        button.image.color = buttonOverlaySelectedColor;
+    }
+
+    private Color _transparentColor = new Color(0, 0, 0, 0);
+    private void UnselectOverlayButton(Button b, string buttonInsideName, bool transparent = false)
+    {
+        if (transparent)
+            b.image.color = _transparentColor;
+        else
+        {
+            var buttonInside = b.transform.Find(buttonInsideName).gameObject;
+            var color = buttonInside.GetComponent<Image>().color;
+            b.image.color = color;
+        }
     }
 
     private string _selectedButtonName = "Selected";
