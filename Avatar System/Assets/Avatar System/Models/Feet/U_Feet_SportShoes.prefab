@@ -1288,7 +1288,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7093201750807004775}
   m_Layer: 0
-  m_Name: M_Feet_SportShoes
+  m_Name: U_Feet_SportShoes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

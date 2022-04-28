@@ -862,7 +862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033685964409515860}
   m_Layer: 0
-  m_Name: M_Feet_Crocs
+  m_Name: U_Feet_Crocs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

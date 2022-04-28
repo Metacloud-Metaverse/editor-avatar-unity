@@ -95,10 +95,13 @@ public class AvatarSystem : MonoBehaviour
 
             if (partTransform != null)
             {
-                var rend = partTransform.gameObject.GetComponent<Renderer>();
-                if (rend == null) rend = partTransform.gameObject.GetComponentInChildren<Renderer>();
-
-                SetMaterial(rend, materialType);
+                //var rend = partTransform.gameObject.GetComponent<Renderer>();
+                //if (rend == null) rend = partTransform.gameObject.GetComponentInChildren<Renderer>();
+                var renderers = partTransform.gameObject.GetComponentsInChildren<Renderer>();
+                foreach (var renderer in renderers)
+                {
+                    SetMaterial(renderer, materialType);
+                }
             }
         }
     }
@@ -304,6 +307,7 @@ public class AvatarSystem : MonoBehaviour
 
         newAvatar.transform.position = avatarTransform.position;
         newAvatar.transform.rotation = avatarTransform.rotation;
+        newAvatar.tag = "Avatar";
 
         SetBones(newAvatar);
 
@@ -494,25 +498,26 @@ public class AvatarSystem : MonoBehaviour
     }
 
 
-    public void SetRandomAvatar(GameObject avatar)
+    public void SetRandomAvatar(GameObject avatar, bool isMale)
     {
         SetBones(avatar);
-
         var skinColor = Random.Range(0, skinMaterials.Length);
         var hairColor = Random.Range(0, hairColors.Length);
         var facialHairColor = Random.Range(0, hairColors.Length);
 
         _skinMaterial = skinMaterials[skinColor];
         //_hairMaterial = hairMaterials[hairColor];
-        SetBodyPart(UPPER, Random.Range(0, upperMeshes.Length), avatar);
-        SetBodyPart(LOWER, Random.Range(0, lowerMeshes.Length), avatar);
-        SetBodyPart(FEET, Random.Range(0, feetMeshes.Length), avatar);
+        SetBodyPart(UPPER, GiveMeRandomBySex(isMale,upperMeshes), avatar);
+        SetBodyPart(LOWER, GiveMeRandomBySex(isMale, lowerMeshes), avatar);
+        SetBodyPart(FEET, GiveMeRandomBySex(isMale, feetMeshes), avatar);
 
-        SetPartNulleableRandom(FACIAL_HAIR, facialHairMeshes, avatar);
-        SetPartNulleableRandom(HAIR, hairMeshes, avatar);
+        if(isMale)
+            SetPartNulleableRandom(FACIAL_HAIR, facialHairMeshes, avatar, isMale);
+
+        SetPartNulleableRandom(HAIR, hairMeshes, avatar, isMale);
 
         //SetNulleableBodyPart(EARRING, Random.Range(0, earringMeshes.Length), avatar);
-        SetPartNulleableRandom(MASK, maskMeshes, avatar);
+        SetPartNulleableRandom(MASK, maskMeshes, avatar, isMale);
         //SetNulleableBodyPart(HAT, Random.Range(0, hatMeshes.Length), avatar);
 
         SetBodyPart(EYES, Random.Range(0, eyesTextures.Length), avatar);
@@ -525,9 +530,26 @@ public class AvatarSystem : MonoBehaviour
         SetEyesColor(Random.Range(0, eyesColors.Length), avatar);
     }
 
-    private void SetPartNulleableRandom(int part, GameObject[] meshes, GameObject avatar)
+    private int GiveMeRandomBySex(bool isMale, GameObject[] meshes, bool nulleable = false)
     {
-        var rnd = Random.Range(-1, meshes.Length);
+        var sexCharacter = (isMale) ? 'M' : 'F';
+        var unisexCharacter = 'U';
+        var indexes = new List<int>();
+
+        for (int i = 0; i < meshes.Length; i++)
+        {
+            var firstChar = meshes[i].name[0];
+            if (firstChar == sexCharacter || firstChar == unisexCharacter)
+                indexes.Add(i);
+        }
+        int firstIndex = (nulleable) ? -1 : 0;
+        var rnd = Random.Range(firstIndex, indexes.Count);
+        return (rnd == -1) ? rnd : indexes[rnd];
+    }
+
+    private void SetPartNulleableRandom(int part, GameObject[] meshes, GameObject avatar, bool isMale)
+    {
+        var rnd = GiveMeRandomBySex(isMale, meshes, true);
         if (rnd >= 0)
             SetNulleableBodyPart(part, rnd, avatar);
         else

@@ -33,21 +33,22 @@ public class ObjectRotator : MonoBehaviour
 
     void Update()
     {
-        if (_isRotating)
-        {
-            // offset
-            _mouseOffset = (Input.mousePosition - _mouseReference);
+        if (!_isRotating) return;
 
-            // apply rotation
-            _rotation.y = -(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
+        if (_rotable == null) SetGameObject();
+        
+        // offset
+        _mouseOffset = (Input.mousePosition - _mouseReference);
 
-            // rotate
-            _rotable.transform.Rotate(_rotation);
+        // apply rotation
+        _rotation.y = -(_mouseOffset.x + _mouseOffset.y) * _sensitivity;
 
-            // store mouse
-            _mouseReference = Input.mousePosition;
+        // rotate
+        _rotable.transform.Rotate(_rotation);
 
-        }
+        // store mouse
+        _mouseReference = Input.mousePosition;
+ 
     }
 
     void OnMouseDown()

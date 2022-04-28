@@ -20,6 +20,10 @@ public class CharacterCustomizationUI : MonoBehaviour
     public Color buttonOverlaySelectedColor = new Color(0, 1, 1);
 
     private int[] _currentStyle;
+    private int[] _defaultMaleStyle;
+    private int[] _defaultFemaleStyle;
+    private int[] _buttonSelected;
+
     private int _skinColor;
     private int _hairColor;
     private int _facialHairColor;
@@ -38,7 +42,10 @@ public class CharacterCustomizationUI : MonoBehaviour
     {
         _bodyPartsCount = avatarSystem.bodyPartsCount;
         _currentStyle = new int[_bodyPartsCount];
+        _buttonSelected = new int[_bodyPartsCount];
+
         SetInitialStyles();
+        SetDefaultStyles();
     }
 
 
@@ -101,6 +108,7 @@ public class CharacterCustomizationUI : MonoBehaviour
     {
         _skinColor = colorIndex;
         avatarSystem.SetSkinColor(colorIndex, _avatar);
+
     }
 
 
@@ -142,22 +150,70 @@ public class CharacterCustomizationUI : MonoBehaviour
     {
         _avatar = avatarSystem.SetBaseMesh(isMale, _avatar);
 
+        if (isMale)
+            SetStyle(_defaultMaleStyle);
+        else
+            SetStyle(_defaultFemaleStyle);
+
+        ResetSelectedOption();
+
         for (int i = 0; i < _currentStyle.Length; i++)
         {
+            print(i);
             if (_currentStyle[i] != -1)
                 avatarSystem.SetBodyPart(i, _currentStyle[i], _avatar);
         }
         avatarSystem.SetHeadHairColor(_hairColor, _avatar);
         avatarSystem.SetFacialHairColor(_facialHairColor, _avatar);
-        avatarSystem.SetFacialHairColor(_eyebrowsColor, _avatar);
+        avatarSystem.SetEyebrowsColor(_eyebrowsColor, _avatar);
         avatarSystem.SetEyesColor(_eyesColor, _avatar);
         avatarSystem.SetSkinColor(_skinColor, _avatar);
 
         _isMale = isMale;
         _sex = (_isMale) ? 0 : 1;
+    }
+
+    private void SetDefaultStyles()
+    {
+        _defaultFemaleStyle = new int[_bodyPartsCount];
+        _defaultMaleStyle = new int[_bodyPartsCount];
+
+        _defaultMaleStyle[AvatarSystem.UPPER] = 0;
+        _defaultMaleStyle[AvatarSystem.LOWER] = 0;
+        _defaultMaleStyle[AvatarSystem.FEET] = 0;
+        _defaultMaleStyle[AvatarSystem.EYES] = 0;
+        _defaultMaleStyle[AvatarSystem.MOUTH] = 0;
+        _defaultMaleStyle[AvatarSystem.EYEBROWS] = 0;
+        _defaultMaleStyle[AvatarSystem.HAIR] = -1;
+        _defaultMaleStyle[AvatarSystem.FACIAL_HAIR] = -1;
+        _defaultMaleStyle[AvatarSystem.EARRING] = -1;
+        _defaultMaleStyle[AvatarSystem.HAT] = -1;
+        _defaultMaleStyle[AvatarSystem.HEAD] = -1;
+        _defaultMaleStyle[AvatarSystem.MASK] = -1;
+
+        _defaultFemaleStyle[AvatarSystem.UPPER] = 2;
+        _defaultFemaleStyle[AvatarSystem.LOWER] = 2;
+        _defaultFemaleStyle[AvatarSystem.FEET] = 0;
+        _defaultFemaleStyle[AvatarSystem.EYES] = 0;
+        _defaultFemaleStyle[AvatarSystem.MOUTH] = 0;
+        _defaultFemaleStyle[AvatarSystem.EYEBROWS] = 0;
+        _defaultFemaleStyle[AvatarSystem.HAIR] = 3;
+        _defaultFemaleStyle[AvatarSystem.FACIAL_HAIR] = -1;
+        _defaultFemaleStyle[AvatarSystem.EARRING] = -1;
+        _defaultFemaleStyle[AvatarSystem.HAT] = -1;
+        _defaultFemaleStyle[AvatarSystem.HEAD] = -1;
+        _defaultFemaleStyle[AvatarSystem.MASK] = -1;
+
 
     }
 
+    private void SetStyle(int[] style)
+    {
+        for (int i = 0; i < style.Length; i++)
+        {
+            _currentStyle[i] = style[i];
+        }
+    }
 
     private void InitializeBodyPart(int bodyPart, int initializationIndex = 0)
     {
@@ -204,17 +260,30 @@ public class CharacterCustomizationUI : MonoBehaviour
                 new Vector2(0, 1)
             );
             var index = wereables[i].index;
+            var option = i;
             button.onClick.AddListener(delegate () { SetBodyPart(bodyPart, index); });
             button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _thumbnailsButtons); });
+            button.onClick.AddListener(delegate () { SaveSelectedOption(bodyPart, option); });
             _thumbnailsButtons.Add(button);
-            if (_currentStyle[bodyPart] == i)
+            if (_buttonSelected[bodyPart] == i)
                 InstantiateSelectedButton(button.transform, true);
             else
                 InstantiateSelectedButton(button.transform);
         }
     }
 
-    
+    private void SaveSelectedOption(int bodyPart, int index)
+    {
+        _buttonSelected[bodyPart] = index;
+    }
+
+    private void ResetSelectedOption()
+    {
+        for (int i = 0; i < _buttonSelected.Length; i++)
+        {
+            _buttonSelected[i] = 0;
+        }
+    }
 
     public void SetSexTab()
     {
@@ -318,7 +387,7 @@ public class CharacterCustomizationUI : MonoBehaviour
 
     public void Randomize()
     {
-        avatarSystem.SetRandomAvatar(_avatar);
+        avatarSystem.SetRandomAvatar(_avatar, _isMale);
     }
 
     private void DestroyThumbnailsButtons()
@@ -762,43 +831,11 @@ public class CharacterCustomizationUI : MonoBehaviour
         //InstantiateSelectedButton(buttonFemale.transform);
     }
 
-    //public void SetEyesColorPanel()
-    //{
-    //    var colors = avatarSystem.eyesColors;
-    //    for (int i = 0; i < colors.Length; i++)
-    //    {
-    //        var button = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Selection].transform);
-    //        button.image.color = colors[i];
-    //        var index = i;
-    //        button.onClick.AddListener(delegate () { SetEyesColor(index); });
-    //        button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _thumbnailsButtons); });
-    //        _thumbnailsButtons.Add(button);
-
-    //        if (_eyesColor == i)
-    //            InstantiateSelectedButton(button.transform, true);
-    //        else
-    //            InstantiateSelectedButton(button.transform);
-    //    }
-    //}
 
     public void SetSkinColorPanel()
     {
         var materials = avatarSystem.skinMaterials;
         SetColorPanel(materials, SetSkinColor, _skinColor, Panel.Subselection);
-        //for (int i = 0; i < materials.Length; i++)
-        //{
-        //    var button = Instantiate(thumbnailButtonPrefab, panelsLayouts[(int)Panel.Selection].transform);
-        //    button.image.color = materials[i].color;
-        //    var index = i;
-        //    button.onClick.AddListener(delegate () { SetSkinColor(index); });
-        //    button.onClick.AddListener(delegate () { SetButtonSelected(button.gameObject, _thumbnailsButtons); });
-        //    _thumbnailsButtons.Add(button);
-
-        //    if (_skinColor == i)
-        //        InstantiateSelectedButton(button.transform, true);
-        //    else
-        //        InstantiateSelectedButton(button.transform);
-        //}
     }
 
     public void SetButtonSelected(GameObject button, List<Button> buttons)
